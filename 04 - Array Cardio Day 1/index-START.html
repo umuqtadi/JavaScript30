@@ -44,10 +44,28 @@
     console.table(fifteen)
 
     // Array.prototype.map()
+    // Map does something to an array and returns with a change the same amount of items. Filter keeps things out, while map checks something and returns same amount
+
     // 2. Give us an array of the inventors first and last names
 
+    const fullName = inventors.map(inventor => `${inventor.first} ${inventor.last}`)
+    
+    console.log(fullName)
+
     // Array.prototype.sort()
+    // Puts things in a certain order based on a condition. Do 1 if something -1 if somethin else
+
     // 3. Sort the inventors by birthdate, oldest to youngest
+
+    const ordered = inventors.sort(function(a,b) {
+      if(a.year > b.year) {
+        return 1
+      } else {
+        return -1
+      }
+    })
+
+    console.table(ordered)
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
