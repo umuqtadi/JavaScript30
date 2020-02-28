@@ -57,27 +57,81 @@
 
     // 3. Sort the inventors by birthdate, oldest to youngest
 
-    const ordered = inventors.sort(function(a,b) {
-      if(a.year > b.year) {
-        return 1
-      } else {
-        return -1
-      }
-    })
+    // const ordered = inventors.sort(function(a,b) {
+    //   if(a.year > b.year) {
+    //     return 1
+    //   } else {
+    //     return -1
+    //   }
+    // })
+
+    //Ternary operator to do top function in shorter way. Saying if a great than b return 1 else return -1
+    const ordered = inventors.sort((a,b) => a.year > b.year ? 1 : -1)
 
     console.table(ordered)
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
 
+    // var totalYears = 0;
+
+    // for(let i=0; i<inventors.length; i++) {
+    //   totalYears += inventors[i].year
+    // }
+
+    // console.log(totalYears)
+
+    //This is tallying up based on what you give it. The zero at the end is telling you to start your total at 0
+    const totalYears = inventors.reduce((total, inventor) => {
+      return total + (inventor.passed - inventor.year)
+    }, 0)
+
+    console.log(totalYears)
+
+    // Reduce allows you to do the above function in a much shorter manner
+
     // 5. Sort the inventors by years lived
+
+    const oldest = inventors.sort(function(a,b) {
+      const lastGuy = a.passed - a.year
+      const nextGuy = b.passed - b.year
+
+      // Way to do the if statement in a ternary operator
+      // return lastGuy > nextGuy ? -1 : 1;
+
+      if(lastGuy > nextGuy) {
+        return -1
+      } else {
+        return 1
+      }
+    })
+
+
+    console.table(oldest)
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+    // Must do a document.querySelector so that you can grab all of the info that is on that page
+
+    // const category = document.querySelector('.mw-category');
+    // const links = [...category.querySelectorAll('a')]
+    // const de = links
+    //   .map(link => link.textContent)
+    //   .filter(streetName =>streetName.includes('de'))
+
+    // THE ABOVE CODE NEEDS TO BE DONE ON THE WEBSITE GIVEN ABOVE
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+
+    const alpha = people.sort(function(lastOne, nextOne) {
+      const [aLast, aFirst] = lastOne.split(', ')
+      const [bLast, bFirst] = nextOne.split(', ')
+      return aLast > bLast ? 1 : -1
+    })
+
+    console.log(alpha)
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
