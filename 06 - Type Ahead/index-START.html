@@ -17,6 +17,16 @@
 <script>
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 
+// need to create an empty array to hold list of cities
+const cities = [];
+
+// need to do a fetch request to grab list of json data from endpoint link
+fetch(endpoint)
+  // returning the info and turning into json
+  .then(blob => blob.json())
+  // this gets you the list of the cities in JSON format. Using spread operator to get all individually
+  .then(data => cities.push(...data))
+
 </script>
 </body>
 </html>
