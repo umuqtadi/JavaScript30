@@ -27,6 +27,15 @@ fetch(endpoint)
   // this gets you the list of the cities in JSON format. Using spread operator to get all individually
   .then(data => cities.push(...data))
 
+function findMatches(wordToMatch, cities){
+  return cities.filter(place => {
+    // check if city or state matches what was written
+    const regex = new RegExp(wordToMatch, 'gi');
+    // check in matches city or state
+    return place.city.match(regex) || place.state.match(regex)
+  })
+}
+
 </script>
 </body>
 </html>
