@@ -10,6 +10,28 @@ const ranges = player.querySelectorAll('.player__slider');
 
 /* Build out our functions */
 
+// this function will switch between playing or pausing the video
+function togglePlay() {
+    const method = video.paused ? 'play' : 'pause';
+    video[method]();
+
+    // if(video.paused) {
+    //     video.play();
+    // } else {
+    //     video.pause();
+    // }
+}
+
+function updateButton() {
+    const icon = this.paused ? '►' : '❚ ❚';
+    toggle.textContent = icon;
+}
 
 
 /*  Hook up the event listeners */
+
+video.addEventListener('click', togglePlay);
+video.addEventListener('play', updateButton);
+video.addEventListener('pause', updateButton);
+
+toggle.addEventListener('click', togglePlay);
