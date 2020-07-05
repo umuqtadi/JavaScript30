@@ -10,9 +10,17 @@
   // Whatever key is pressed will get pushed into an array
   const pressed = [];
   const secretCode = 'wesbos';
+
   window.addEventListener('keyup', (e) => { 
     console.log(e.key)
     pressed.push(e.key)
+    // makes sure the length of the keys are same as the secret code
+    pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+    // checking to see if its the secret code
+    if(pressed.join('').includes(secretCode)) {
+      console.log('DING DING!')
+      cornify_add();
+    }
     console.log(pressed)
   });
 </script>
