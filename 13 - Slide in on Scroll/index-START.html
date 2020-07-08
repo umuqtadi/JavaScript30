@@ -64,25 +64,25 @@
     const sliderImages = document.querySelectorAll('.slide-in');
 
     // this function will do something when we scroll page up and down
-    function checkSlide(e) {
+    function checkSlide() {
       // loop over image and determine which image needs to be shown
       sliderImages.forEach(sliderImage => {
         // this math is to figure out when it is the middle of the page then show image
-        const slideInAt = (window.scrollY - window.innerHeight) - sliderImage.height / 2;
+        const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height / 2;
         // bottom of the image
-        const imageBottom = sliderImage.offsetTop + sliderImage,height;
+        const imageBottom = sliderImage.offsetTop + sliderImage.height;
         const isHalfShown = slideInAt > sliderImage.offsetTop;
         const isNotScrolledPast = window.scrollY < imageBottom;
-        if(isHalfShown && isNotScrolledPast) {
+        if (isHalfShown && isNotScrolledPast) {
           sliderImage.classList.add('active');
         } else {
           sliderImage.classList.remove('active');
         }
-      })
+      });
     }
 
     //this will trigger the function when we scroll
-    window.addEventListener('scroll', debounce(checkSlide) );
+    window.addEventListener('scroll', debounce(checkSlide));
 
   </script>
 
