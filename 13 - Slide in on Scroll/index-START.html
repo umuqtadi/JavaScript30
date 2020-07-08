@@ -58,6 +58,17 @@
       };
     }
 
+    //selest all of the images we are looking for.
+    const sliderImages = document.querySelectorAll('.slide-in');
+
+    // this function will do something when we scroll page up and down
+    function checkSlide(e) {
+      console.log(e);
+    }
+
+    //this will trigger the function when we scroll
+    window.addEventListener('scroll', checkSlide);
+
   </script>
 
   <style>
